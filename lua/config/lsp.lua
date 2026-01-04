@@ -21,7 +21,7 @@ vim.lsp.config["basedpyright"] = {
 	basedpyright = {
 	    analysis = {
 		autoSearchPaths = true,
-		diagnosticMode = "workspace",  -- "workspace", "openFilesOnly", as you prefer
+		diagnosticMode = "workspace", -- "workspace", "openFilesOnly", as you prefer
 		useLibraryCodeForTypes = true,
 	    },
 	},
@@ -32,14 +32,18 @@ vim.lsp.config["basedpyright"] = {
 vim.lsp.config["ruff"] = {
     cmd = { "ruff", "server" },
     filetypes = { "python" },
+    root_markers = {
+	".git",
+	"requirements.txt"
+    },
 }
 
 vim.lsp.enable({ "lua_ls", "basedpyright", "ruff" })
 
 vim.diagnostic.config({
-    virtual_text = false, -- Display error alongside code
-    signs        = true, -- Icons ? prbl
-    underline    = true, -- Display error beneath 
-    virtual_lines = { current_line = true }, -- display error description only on current line
-    update_in_insert = true, -- update diagnostics while typing
+    virtual_text     = false,                -- Display error alongside code
+    signs            = true,                 -- Icons ? prbl
+    underline        = true,                 -- Display error beneath
+    virtual_lines    = { current_line = true }, -- display error description only on current line
+    update_in_insert = false,                 -- update diagnostics while typing
 })
