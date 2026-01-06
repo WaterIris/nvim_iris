@@ -16,6 +16,6 @@ opt.sidescrolloff = 8
 -- Disable file things
 opt.swapfile = false
 opt.undofile = false
-
+-- Theming
 opt.laststatus = 2 -- Or 3 for global statusline
-opt.statusline = " %f %m %= %l:%c  "
+vim.opt.statusline = " %f %m %= %l:%c ♥ "
