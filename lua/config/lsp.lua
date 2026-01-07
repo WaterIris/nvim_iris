@@ -10,37 +10,7 @@ vim.lsp.config["ruff"] = {
     cmd = { "ruff", "server" },
     filetypes = { "python" },
     root_markers = { "pyproject.toml", "ruff.toml", ".git" },
-    -- -- We disable hover on Ruff because Pyright provides better type-specific hover info
-    -- on_attach = function(client, _)
-    --     client.server_capabilities.hoverProvider = false
-    -- end,
 }
-
--- -- Python LSP: Pyright (Type Checking)
--- vim.lsp.config["pyright"] = {
---     cmd = { "pyright-langserver", "--stdio" },
---     filetypes = { "python" },
---     root_markers = {
---         "pyproject.toml",
---         "setup.py",
---         "setup.cfg",
---         "requirements.txt",
---         ".git",
---     },
---     settings = {
---         pyright = {
---             disableOrganizeImports = true, -- Let Ruff handle imports
---         },
---         python = {
---             analysis = {
---                 autoSearchPaths = true,
---                 diagnosticMode = "workspace",
---                 useLibraryCodeForTypes = true,
---                 -- ignore = { '*' }, -- Let Ruff handle linting diagnostics
---             },
---         },
---     },
--- }
 
 -- Python LSP: Pylsp (Configured ONLY for Mypy type checking)
 vim.lsp.config["pylsp"] = {
@@ -74,10 +44,17 @@ vim.lsp.enable({ "lua_ls", "pylsp", "ruff" })
 
 vim.diagnostic.config({
     virtual_text     = false,                -- Display error alongside code
-    signs            = true,                 -- Icons ? prbl
     underline        = true,                 -- Display error beneath
     virtual_lines    = { current_line = true }, -- display error description only on current line
     update_in_insert = false,                 -- update diagnostics while typing
+    signs = {
+	text = {
+	    [vim.diagnostic.severity.ERROR] = '✘',
+	    [vim.diagnostic.severity.WARN]  = '▲',
+	    [vim.diagnostic.severity.HINT]  = '⚑',
+	    [vim.diagnostic.severity.INFO]  = '»',
+	},
+    },
 })
 
 
