@@ -10,39 +10,67 @@ vim.lsp.config["ruff"] = {
     cmd = { "ruff", "server" },
     filetypes = { "python" },
     root_markers = { "pyproject.toml", "ruff.toml", ".git" },
-    -- We disable hover on Ruff because Pyright provides better type-specific hover info
-    on_attach = function(client, _)
-        client.server_capabilities.hoverProvider = false
-    end,
+    -- -- We disable hover on Ruff because Pyright provides better type-specific hover info
+    -- on_attach = function(client, _)
+    --     client.server_capabilities.hoverProvider = false
+    -- end,
 }
 
--- Python LSP: Pyright (Type Checking)
-vim.lsp.config["pyright"] = {
-    cmd = { "pyright-langserver", "--stdio" },
+-- -- Python LSP: Pyright (Type Checking)
+-- vim.lsp.config["pyright"] = {
+--     cmd = { "pyright-langserver", "--stdio" },
+--     filetypes = { "python" },
+--     root_markers = {
+--         "pyproject.toml",
+--         "setup.py",
+--         "setup.cfg",
+--         "requirements.txt",
+--         ".git",
+--     },
+--     settings = {
+--         pyright = {
+--             disableOrganizeImports = true, -- Let Ruff handle imports
+--         },
+--         python = {
+--             analysis = {
+--                 autoSearchPaths = true,
+--                 diagnosticMode = "workspace",
+--                 useLibraryCodeForTypes = true,
+--                 -- ignore = { '*' }, -- Let Ruff handle linting diagnostics
+--             },
+--         },
+--     },
+-- }
+
+-- Python LSP: Pylsp (Configured ONLY for Mypy type checking)
+vim.lsp.config["pylsp"] = {
+    cmd = { "pylsp" },
     filetypes = { "python" },
-    root_markers = {
-        "pyproject.toml",
-        "setup.py",
-        "setup.cfg",
-        "requirements.txt",
-        ".git",
-    },
+    root_markers = { "pyproject.toml", "setup.py", ".git" },
+    offset_encoding = "utf-8",
     settings = {
-        pyright = {
-            disableOrganizeImports = true, -- Let Ruff handle imports
-        },
-        python = {
-            analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = "workspace",
-                useLibraryCodeForTypes = true,
-                -- ignore = { '*' }, -- Let Ruff handle linting diagnostics
+        pylsp = {
+            plugins = {
+                -- Disable standard Pylsp linters (let Ruff handle these)
+                pyflakes = { enabled = false },
+                pycodestyle = { enabled = false },
+                mccabe = { enabled = false },
+                pylint = { enabled = false },
+                -- Disable formatters (let Ruff handle these)
+                autopep8 = { enabled = false },
+                yapf = { enabled = false },
+                -- Enable Mypy plugin
+                pylsp_mypy = {
+                    enabled = true,
+                    live_mode = true, -- Real-time checking (VS Code feel)
+                    strict = true,   -- Set to true for stricter type checking
+                },
             },
         },
     },
 }
 
-vim.lsp.enable({ "lua_ls", "pyright", "ruff" })
+vim.lsp.enable({ "lua_ls", "pylsp", "ruff" })
 
 vim.diagnostic.config({
     virtual_text     = false,                -- Display error alongside code
