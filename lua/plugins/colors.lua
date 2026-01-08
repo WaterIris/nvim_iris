@@ -15,14 +15,17 @@ return {
     {
 	"rose-pine/neovim",
 	config = function()
-	    --       require("rose-pine").setup({
+	    require("rose-pine").setup({
+                styles = {
+                    italic = false, -- This disables italics globally for the theme
+                },
 		-- highlight_groups = {
-		    --         StatusLine = { fg = "#31748f", bg = "#31748f", blend = 10 },
-		    --         StatusLineNC = { fg = "subtle", bg = "surface" },
-		    --     },
-		    --        })
-		    vim.cmd.colorscheme "rose-pine"
-		    enable_transparency()
-		end
-	    },
-	}
+		            -- StatusLine = { fg = "#31748f", bg = "#31748f", blend = 10 },
+		            -- StatusLineNC = { fg = "subtle", bg = "surface" },
+		-- },
+            })
+	    vim.cmd.colorscheme "rose-pine"
+	    enable_transparency()
+	end
+    },
+}

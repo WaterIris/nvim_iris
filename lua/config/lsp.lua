@@ -12,35 +12,60 @@ vim.lsp.config["ruff"] = {
     root_markers = { "pyproject.toml", "ruff.toml", ".git" },
 }
 
--- Python LSP: Pylsp (Configured ONLY for Mypy type checking)
-vim.lsp.config["pylsp"] = {
-    cmd = { "pylsp" },
+-- -- Python LSP: Pylsp (Configured ONLY for Mypy type checking)
+-- vim.lsp.config["pylsp"] = {
+--     cmd = { "pylsp" },
+--     filetypes = { "python" },
+--     root_markers = { "pyproject.toml", "setup.py", ".git" },
+--     offset_encoding = "utf-8",
+--     settings = {
+--         pylsp = {
+--             plugins = {
+--                 -- Disable standard Pylsp linters (let Ruff handle these)
+--                 pyflakes = { enabled = false },
+--                 pycodestyle = { enabled = false },
+--                 mccabe = { enabled = false },
+--                 pylint = { enabled = false },
+--                 -- Disable formatters (let Ruff handle these)
+--                 autopep8 = { enabled = false },
+--                 yapf = { enabled = false },
+--                 -- Enable Mypy plugin
+--                 -- pylsp_mypy = {
+--                 --     enabled = true,
+--                 --     live_mode = true, -- Real-time checking (VS Code feel)
+--                 --     strict = false,   -- Set to true for stricter type checking
+--                 -- },
+--             },
+--         },
+--     },
+-- }
+-- Python LSP: Basedpyright (Type Checking, Completion, and Intelligence)
+
+vim.lsp.config["basedpyright"] = {
+    cmd = { "basedpyright-langserver", "--stdio" },
     filetypes = { "python" },
-    root_markers = { "pyproject.toml", "setup.py", ".git" },
-    offset_encoding = "utf-8",
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
     settings = {
-        pylsp = {
-            plugins = {
-                -- Disable standard Pylsp linters (let Ruff handle these)
-                pyflakes = { enabled = false },
-                pycodestyle = { enabled = false },
-                mccabe = { enabled = false },
-                pylint = { enabled = false },
-                -- Disable formatters (let Ruff handle these)
-                autopep8 = { enabled = false },
-                yapf = { enabled = false },
-                -- Enable Mypy plugin
-                pylsp_mypy = {
-                    enabled = true,
-                    live_mode = true, -- Real-time checking (VS Code feel)
-                    strict = true,   -- Set to true for stricter type checking
+        basedpyright = {
+            analysis = {
+                -- Type checking modes: "off", "basic", "standard", "strict", "all"
+                typeCheckingMode = "standard", 
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "openFilesOnly", -- "workspace" for project-wide
+                -- Enables inlay hints (parameter names, types)
+                inlayHints = {
+                    variableTypes = true,
+                    callArgumentNames = true,
+                    functionReturnTypes = true,
+                    genericTypes = true,
                 },
             },
         },
     },
 }
 
-vim.lsp.enable({ "lua_ls", "pylsp", "ruff" })
+vim.lsp.enable({ "lua_ls", "basedpyright", "ruff" })
 
 vim.diagnostic.config({
     virtual_text     = false,                -- Display error alongside code
