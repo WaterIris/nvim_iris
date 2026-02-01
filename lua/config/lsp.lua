@@ -12,60 +12,16 @@ vim.lsp.config["ruff"] = {
     root_markers = { "pyproject.toml", "ruff.toml", ".git" },
 }
 
--- -- Python LSP: Pylsp (Configured ONLY for Mypy type checking)
--- vim.lsp.config["pylsp"] = {
---     cmd = { "pylsp" },
---     filetypes = { "python" },
---     root_markers = { "pyproject.toml", "setup.py", ".git" },
---     offset_encoding = "utf-8",
---     settings = {
---         pylsp = {
---             plugins = {
---                 -- Disable standard Pylsp linters (let Ruff handle these)
---                 pyflakes = { enabled = false },
---                 pycodestyle = { enabled = false },
---                 mccabe = { enabled = false },
---                 pylint = { enabled = false },
---                 -- Disable formatters (let Ruff handle these)
---                 autopep8 = { enabled = false },
---                 yapf = { enabled = false },
---                 -- Enable Mypy plugin
---                 -- pylsp_mypy = {
---                 --     enabled = true,
---                 --     live_mode = true, -- Real-time checking (VS Code feel)
---                 --     strict = false,   -- Set to true for stricter type checking
---                 -- },
---             },
---         },
---     },
--- }
--- Python LSP: Basedpyright (Type Checking, Completion, and Intelligence)
-
-vim.lsp.config["basedpyright"] = {
-    cmd = { "basedpyright-langserver", "--stdio" },
+-- Python LSP: Astral ty (Extreme Speed Type Checking)
+vim.lsp.config["ty"] = {
+    cmd = { "ty", "server" },
     filetypes = { "python" },
-    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
-    settings = {
-        basedpyright = {
-            analysis = {
-                -- Type checking modes: "off", "basic", "standard", "strict", "all"
-                typeCheckingMode = "standard", 
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = "openFilesOnly", -- "workspace" for project-wide
-                -- Enables inlay hints (parameter names, types)
-                inlayHints = {
-                    variableTypes = true,
-                    callArgumentNames = true,
-                    functionReturnTypes = true,
-                    genericTypes = true,
-                },
-            },
-        },
-    },
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", ".git" },
+    offset_encoding = "utf-8",
+    settings = {},
 }
 
-vim.lsp.enable({ "lua_ls", "basedpyright", "ruff" })
+vim.lsp.enable({ "lua_ls", "ty", "ruff" })
 
 vim.diagnostic.config({
     virtual_text     = false,                -- Display error alongside code
@@ -81,31 +37,4 @@ vim.diagnostic.config({
 	},
     },
 })
-
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.py",
-    callback = function()
-        -- 1. Organize Imports (isort)
-        vim.lsp.buf.code_action({
-            context = { only = { "source.organizeImports.ruff" } },
-            apply = true,
-        })
-        
-        -- 2. Fix everything EXCEPT what we marked 'unfixable' in pyproject.toml
-        vim.lsp.buf.code_action({
-            context = { only = { "source.fixAll.ruff" } },
-            apply = true,
-        })
-
-        -- 3. Final format
-        vim.lsp.buf.format({ async = false })
-    end,
-})
-
-
--- vim.api.nvim_create_autocmd("FileType", {
---   callback = function()
---     pcall(vim.treesitter.start)
---   end,
--- })
+vim.lsp.inlay_hint.enable(true)
