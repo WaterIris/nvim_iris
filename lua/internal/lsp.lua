@@ -29,7 +29,7 @@ vim.lsp.config["lua_ls"] = {
     },
 }
 
--- Python LSP: Ruff (Linter and Formatter)
+-- Ruff: Fast Linting and Formatting
 vim.lsp.config["ruff"] = {
     cmd = { "ruff", "server" },
     filetypes = { "python" },
@@ -51,15 +51,29 @@ vim.lsp.config["ruff"] = {
     },
 }
 
--- Python LSP: Astral ty (Extreme Speed Type Checking)
+-- Ty: Extreme Speed Type Checking
 vim.lsp.config["ty"] = {
     cmd = { "ty", "server" },
     filetypes = { "python" },
     root_markers = { "pyproject.toml", "setup.py", "setup.cfg", ".git" },
     offset_encoding = "utf-16",
     settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "strict",  -- Or "standard" if strict is too noisy
+                diagnosticMode = "workspace", -- Analyzes the whole project, not just open files
+            },
+        },
+        ty = {
+            completions = {
+                autoImport = false,
+            },
+        },
     },
 }
+
 -- Nix LSP: nil (Incremental Analysis & Fast Feedback)
 vim.lsp.config["nil"] = {
     cmd = { "nil" },
@@ -101,6 +115,6 @@ vim.diagnostic.config({
 })
 
 vim.api.nvim_create_autocmd("BufWritePre",
-    { callback = function() vim.lsp.buf.format({ async = false }) end })
+    { callback = function() vim.lsp.buf.format({ async = true }) end })
 
 vim.lsp.inlay_hint.enable(true)
