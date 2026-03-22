@@ -58,7 +58,7 @@ return {
             -- This is the "Automatic" part
             trigger = {
                 enabled = true,
-                show_on_insert = true,            -- Show as soon as you enter insert mode inside a func
+                show_on_insert = false,           -- Show as soon as you enter insert mode inside a func
                 show_on_trigger_character = true, -- Show on '(' or ','
             },
         },

@@ -38,18 +38,25 @@ vim.lsp.config["ruff"] = {
     on_attach = function(client, bufnr)
         client.server_capabilities.hoverProvider = false
     end,
-    settings = {
-        configurationPreference = "filesystemFirst", -- Respects your pyproject.toml
-        lineLength = 120,
-        lint = {
-            select = { "E", "F", "I", "N", "UP" }, -- I = Organize Imports
-            extendSelect = { "W", "B" },
-        },
-        format = {
-            preview = true, -- Enables experimental formatting features if needed
+    init_options = {
+        settings = {
+            fixAll = false,
+            configurationPreference = "filesystemFirst", -- Respects your pyproject.toml
+            organizeImports = true,
+            lineLength = 120,
+            lint = {
+                select = { "E", "F", "I", "N", "UP" }, -- I = Organize Imports
+                extendSelect = { "W", "B" },
+                enable = true,
+            },
+            format = {
+                preview = true,       -- Enables experimental formatting features if needed
+                backend = "internal", -- ["internal" | "uv"]
+            },
         },
     },
 }
+
 
 -- Ty: Extreme Speed Type Checking
 vim.lsp.config["ty"] = {
@@ -58,15 +65,13 @@ vim.lsp.config["ty"] = {
     root_markers = { "pyproject.toml", "setup.py", "setup.cfg", ".git" },
     offset_encoding = "utf-16",
     settings = {
-        python = {
-            analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                typeCheckingMode = "strict",  -- Or "standard" if strict is too noisy
-                diagnosticMode = "workspace", -- Analyzes the whole project, not just open files
-            },
-        },
         ty = {
+            diagnosticMode = 'openFilesOnly',
+            showSyntaxErrors = true,
+            inlayHints = {
+                variableTypes = false,
+                callArgumentNames = false,
+            },
             completions = {
                 autoImport = false,
             },
@@ -116,5 +121,6 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd("BufWritePre",
     { callback = function() vim.lsp.buf.format({ async = true }) end })
+
 
 vim.lsp.inlay_hint.enable(true)
