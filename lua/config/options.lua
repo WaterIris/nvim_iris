@@ -9,6 +9,10 @@ opt.relativenumber = true
 opt.autoindent = true
 opt.smartindent = true
 opt.shiftwidth = 4
+opt.tabstop = 4      -- Number of spaces a <Tab> counts for
+opt.softtabstop = 4  -- Number of spaces a <Tab> counts for while editing
+opt.expandtab = true -- Convert tabs to spaces (CRITICAL for your request)
+-- Clipboard
 opt.clipboard:append("unnamedplus")
 -- Scrolling
 opt.scrolloff = 8
