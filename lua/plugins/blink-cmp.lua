@@ -27,16 +27,18 @@ return {
             completion = { menu = { auto_show = true } },
         },
         appearance = {
-            nerd_font_variant = 'normal',
+            use_nvim_cmp_as_default = true, -- Better compatibility with existing themes
+            nerd_font_variant = 'mono',     -- 'mono' often looks cleaner in completion menus
         },
         completion = {
             documentation = {
                 auto_show = true,
+                window = { border = 'rounded' },
             },
             list = {
                 selection = {
                     preselect = false,
-                    auto_insert = true,
+                    auto_insert = false,
                 },
             },
             accept = { auto_brackets = { enabled = false }, },
@@ -48,9 +50,18 @@ return {
                 'snippets',
                 'buffer' },
         },
-        fuzzy = {
-            implementation = "prefer_rust_with_warning",
-        }
+        signature = {
+            enabled = true,
+            window = {
+                border = 'rounded',
+            },
+            -- This is the "Automatic" part
+            trigger = {
+                enabled = true,
+                show_on_insert = true,            -- Show as soon as you enter insert mode inside a func
+                show_on_trigger_character = true, -- Show on '(' or ','
+            },
+        },
     },
     opts_extend = { "sources.default" }
 }
