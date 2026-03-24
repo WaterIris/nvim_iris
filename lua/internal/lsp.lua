@@ -37,12 +37,25 @@ vim.lsp.config["ruff"] = {
     -- Important: Disable Ruff's hover so it doesn't clash with Ty
     on_attach = function(client, bufnr)
         client.server_capabilities.hoverProvider = false
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.code_action({
+                    context = {
+                        only = { "source.organizeImports" },
+                        diagnostics = {} -- Add this line to satisfy the type requirement
+                    },
+                    apply = true,
+                })
+            end,
+        })
     end,
     init_options = {
         settings = {
             fixAll = false,
-            configurationPreference = "filesystemFirst", -- Respects your pyproject.toml
             organizeImports = true,
+            configurationPreference = "filesystemFirst", -- Respects your pyproject.toml
             lineLength = 120,
             lint = {
                 select = { "E", "F", "I", "N", "UP" }, -- I = Organize Imports
@@ -121,6 +134,5 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd("BufWritePre",
     { callback = function() vim.lsp.buf.format({ async = true }) end })
-
 
 vim.lsp.inlay_hint.enable(true)
