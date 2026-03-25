@@ -2,12 +2,14 @@ local opt = vim.opt
 -- Graphical
 opt.cursorline = true
 opt.termguicolors = true
+opt.updatetime = 50
 -- Line numbers
 opt.number = true
 opt.relativenumber = true
 -- Tabs and indentation
 opt.autoindent = true
 opt.smartindent = true
+vim.opt.wrap = false
 opt.shiftwidth = 4
 opt.tabstop = 4      -- Number of spaces a <Tab> counts for
 opt.softtabstop = 4  -- Number of spaces a <Tab> counts for while editing
@@ -19,7 +21,9 @@ opt.scrolloff = 8
 opt.sidescrolloff = 8
 -- Disable file things
 opt.swapfile = false
-opt.undofile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 -- Theming
 opt.laststatus = 2 -- Or 3 for global statusline
-vim.opt.statusline = " %f %m %= %l:%c ♥ "
+opt.statusline = " %f %m %= %l:%c ♥ "
