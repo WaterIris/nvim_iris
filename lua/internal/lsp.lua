@@ -83,7 +83,7 @@ vim.lsp.config["ty"] = {
             showSyntaxErrors = true,
             inlayHints = {
                 variableTypes = false,
-                callArgumentNames = false,
+                callArgumentNames = true,
             },
             completions = {
                 autoImport = false,

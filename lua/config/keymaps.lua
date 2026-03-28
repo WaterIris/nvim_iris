@@ -28,7 +28,7 @@ keymap.set("n", "N", "Nzzzv")
 keymap.set("x", "<leader>p", [["_dP]])
 keymap.set("v", "p", '"_dp', opts)
 
-keymap.set({"n", "v"}, "d", '"_d', opts)
+-- keymap.set({"n", "v"}, "d", '"_d', opts)
 keymap.set({"n", "v"}, "x", '"_x', opts)
 
 -- Replace the word cursor is on globally
