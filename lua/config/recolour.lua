@@ -12,4 +12,5 @@ vim.api.nvim_set_hl(0, "StatusLine", { fg = "#f7768e", bg = "#2F212F", bold = tr
 vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#908caa", bg = "#1f1d2e" })
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })

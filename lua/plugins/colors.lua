@@ -1,6 +1,6 @@
-local function enable_transparency()
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-end
+-- local function enable_transparency()
+--     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- end
 return {
     {
         "folke/tokyonight.nvim",
@@ -15,7 +15,7 @@ return {
             })
 
             vim.cmd.colorscheme "tokyonight"
-            enable_transparency() -- additional command to override colorscheme
+            -- enable_transparency() -- additional command to override colorscheme
         end,
     },
 }
