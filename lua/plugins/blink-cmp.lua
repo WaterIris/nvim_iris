@@ -38,7 +38,7 @@ return {
                 },
             },
             menu = {
-                scrollbar = false,
+                -- scrollbar = false,
             },
             documentation = {
                 auto_show = false,
