@@ -118,7 +118,7 @@ vim.lsp.enable({ "lua_ls", "ty", "ruff", "nil" })
 
 vim.diagnostic.config({
     virtual_text     = false,                   -- Display error alongside code
-    underline        = true,                   -- Display error beneath
+    underline        = true,                    -- Display error beneath
     virtual_lines    = { current_line = true }, -- display error description only on current line
     update_in_insert = false,                   -- update diagnostics while typing
     severity_sort    = true,
