@@ -11,8 +11,14 @@ return {
             preset = "none", -- disable builtin if doing custom
             ["<Up>"] = { "select_prev", "fallback" },
             ["<Down>"] = { "select_next", "fallback" },
+
+            ["k"] = { "select_prev", "fallback" },
+            ["j"] = { "select_next", "fallback" },
+            ["l"] = { "accept", "fallback" },
+            ["c"] = { "cancel", "fallback" },
+
             ["<CR>"] = { "accept", "fallback" },
-            ["<Tab>"] = { "select_next", "fallback" },
+            ["<Tab>"] = { "accept", "fallback" },
             ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
         },
 
