@@ -11,6 +11,10 @@ return {
         popup_border_style = "rounded", -- or "" to use 'winborder' on Neovim v0.11+
         window = {
             position = "current",
+            mappings = {
+                ["h"] = { "close_node" },
+                ["l"] = { "open" },
+            },
         },
         filesystem = {
             filtered_items = {
