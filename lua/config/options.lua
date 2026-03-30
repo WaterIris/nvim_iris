@@ -13,7 +13,7 @@ vim.opt.wrap = false
 opt.shiftwidth = 4
 opt.tabstop = 4      -- Number of spaces a <Tab> counts for
 opt.softtabstop = 4  -- Number of spaces a <Tab> counts for while editing
-opt.expandtab = true -- Convert tabs to spaces (CRITICAL for your request)
+opt.expandtab = true -- Convert tabs to spaces
 -- Clipboard
 opt.clipboard:append("unnamedplus")
 -- Scrolling
@@ -27,3 +27,9 @@ opt.undofile = true
 -- Theming
 opt.laststatus = 2 -- Or 3 for global statusline
 opt.statusline = " %f %m %= %l:%c ♥ "
+
+-- Disable the native horizontal completion menu
+vim.opt.wildmenu = false -- handled by blink-cmp
+-- Set wildmode to an empty string or a mode that doesn't trigger automatically
+vim.opt.wildmode = ""    -- handled by blink-cmp
+vim.opt.winborder = "rounded" -- automatically adds rounded borders to popups 

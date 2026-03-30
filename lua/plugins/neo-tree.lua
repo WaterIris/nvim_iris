@@ -4,11 +4,11 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
-        "nvim-tree/nvim-web-devicons",  -- optional, but recommended
+        "nvim-tree/nvim-web-devicons", -- optional, but recommended
     },
-    lazy = false,                       -- neo-tree will lazily load itself
+    lazy = false,                      -- neo-tree will lazily load itself
     opts = {
-        popup_border_style = "rounded", -- or "" to use 'winborder' on Neovim v0.11+
+        popup_border_style = "",       -- or "" to use 'winborder' on Neovim v0.11+
         window = {
             position = "current",
             mappings = {

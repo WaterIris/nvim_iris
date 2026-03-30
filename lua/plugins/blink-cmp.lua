@@ -13,12 +13,13 @@ return {
             ["<Down>"] = { "select_next", "fallback" },
             ["<CR>"] = { "accept", "fallback" },
             ["<Tab>"] = { "select_next", "fallback" },
+            ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
         },
 
         cmdline = {
             keymap = {
                 preset = 'none',
-                ["<CR>"] = { "accept", "fallback" },
+                ["<CR>"] = { "accept_and_enter", "fallback" },
                 ["<Up>"] = { "select_prev", "fallback" },
                 ["<Down>"] = { "select_next", "fallback" },
                 ["<Tab>"] = { "select_next" },
@@ -28,7 +29,7 @@ return {
         appearance = {
             nerd_font_variant = 'mono',
         },
-
+        signature = { enabled = true },
         completion = {
             ghost_text = { enabled = true },
             list = {
@@ -37,12 +38,10 @@ return {
                 },
             },
             menu = {
-                border = "rounded",
                 scrollbar = false,
             },
             documentation = {
                 auto_show = false,
-                window = { border = "rounded" },
             },
         },
 
@@ -60,5 +59,5 @@ return {
         },
         fuzzy = { implementation = "prefer_rust_with_warning" }
     },
-    opts_extend = { "sources.default" }
+    opts_extend = { "sources.default" },
 }
