@@ -12,10 +12,10 @@ return {
             ["<Up>"] = { "select_prev", "fallback" },
             ["<Down>"] = { "select_next", "fallback" },
 
-            ["k"] = { "select_prev", "fallback" },
-            ["j"] = { "select_next", "fallback" },
-            ["l"] = { "accept", "fallback" },
-            ["c"] = { "cancel", "fallback" },
+            -- ["k"] = { "select_prev", "fallback" },
+            -- ["j"] = { "select_next", "fallback" },
+            -- ["l"] = { "accept", "fallback" },
+            -- ["c"] = { "cancel", "fallback" },
 
             ["<CR>"] = { "accept", "fallback" },
             ["<Tab>"] = { "accept", "fallback" },
@@ -35,16 +35,17 @@ return {
         appearance = {
             nerd_font_variant = 'mono',
         },
-        signature = { enabled = true },
+        signature = {
+            enabled = true,
+            show_on_insert = false,
+        },
         completion = {
+            keyword = { range = 'prefix' },
             ghost_text = { enabled = true },
             list = {
                 selection = {
                     preselect = true
                 },
-            },
-            menu = {
-                -- scrollbar = false,
             },
             documentation = {
                 auto_show = false,
@@ -52,7 +53,7 @@ return {
         },
 
         sources = {
-            default = { 'lsp', 'path', 'snippets', 'buffer' },
+            default = { 'lsp', 'path', 'buffer' },
             providers = {
                 cmdline = {
                     min_keyword_length = function(ctx)

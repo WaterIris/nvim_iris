@@ -14,4 +14,5 @@ vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#908caa", bg = "#1f1d2e" })
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+
 vim.api.nvim_set_hl(0, 'BlinkCmpScrollBarThumb', { fg = "none", bg = "#27a1b9" })

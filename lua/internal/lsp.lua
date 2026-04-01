@@ -82,7 +82,7 @@ vim.lsp.config["ty"] = {
             diagnosticMode = 'openFilesOnly',
             showSyntaxErrors = true,
             inlayHints = {
-                variableTypes = false,
+                variableTypes = true,
                 callArgumentNames = true,
             },
             completions = {
