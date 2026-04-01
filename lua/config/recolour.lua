@@ -16,3 +16,4 @@ vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
 vim.api.nvim_set_hl(0, 'BlinkCmpScrollBarThumb', { fg = "none", bg = "#27a1b9" })
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg ="#565f89", bg = "none"})
