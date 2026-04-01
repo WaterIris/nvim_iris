@@ -37,7 +37,6 @@ return {
         },
         signature = {
             enabled = true,
-            show_on_insert = false,
         },
         completion = {
             keyword = { range = 'prefix' },
