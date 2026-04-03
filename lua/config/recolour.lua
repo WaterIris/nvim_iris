@@ -8,12 +8,11 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#bb9af7", bold = true })
 -- Current line
 -- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1a1b26" })
 vim.api.nvim_set_hl(0, "StatusLine", { fg = "#f7768e", bg = "#2F212F", bold = true })
-
-vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#908caa", bg = "#1f1d2e" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#f7768e", bg = "#2F212F", bold = true })
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
 vim.api.nvim_set_hl(0, 'BlinkCmpScrollBarThumb', { fg = "none", bg = "#27a1b9" })
-vim.api.nvim_set_hl(0, "LspInlayHint", { fg ="#565f89", bg = "none"})
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#545c7e", bg = "none" })
