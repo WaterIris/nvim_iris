@@ -9,6 +9,9 @@ return {
         config = function()
             require("tokyonight").setup({
                 style = "night", -- "storm", "moon", "night", or "day"
+                styles = {
+                    keywords = { italic = false },
+                },
             })
             vim.cmd.colorscheme "tokyonight"
         end,
