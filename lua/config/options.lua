@@ -33,3 +33,4 @@ vim.opt.wildmenu = false -- handled by blink-cmp
 -- Set wildmode to an empty string or a mode that doesn't trigger automatically
 vim.opt.wildmode = ""    -- handled by blink-cmp
 vim.opt.winborder = "rounded" -- automatically adds rounded borders to popups 
+
