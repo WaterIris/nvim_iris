@@ -17,8 +17,8 @@ return {
         vim.keymap.set("n", "gt", builtin.lsp_type_definitions,
             { noremap = true, silent = true, desc = "LSP Type Definitions" })
 
-        vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, { desc = 'RAW Line Diagnostics' })
-        vim.keymap.set('n', '<leader>hd', vim.lsp.buf.hover, { desc = 'LSP Hover Documentation' })
+        vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, { desc = 'RAW Line Diagnostics' })
+        vim.keymap.set('n', '<leader>gh', vim.lsp.buf.hover, { desc = 'LSP Hover Documentation' })
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true, desc = "LSP Rename" })
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "LSP Code Action" })
     end

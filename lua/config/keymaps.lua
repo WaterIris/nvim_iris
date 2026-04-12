@@ -37,4 +37,7 @@ vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open New Tab" }) 
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close Current Tab" })     --close current tab
 vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go Next Tab" })               --go to next
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go Prev Tab" })               --go to pre
+vim.keymap.set("n", "<leader>o", "<cmd>tabnew<CR>", { desc = "Open New Tab" })            --open new tab
+vim.keymap.set("n", "<leader>l", "<cmd>tabn<CR>", { desc = "Go Next Tab" })               --go to next
+vim.keymap.set("n", "<leader>h", "<cmd>tabp<CR>", { desc = "Go Prev Tab" })               --go to pre
 vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Duplicate Current Tab" }) --open current tab in new tab
