@@ -10,11 +10,11 @@ return {
         vim.keymap.set('n', '<leader>ft', builtin.help_tags, { desc = 'Telescope Help Tags' })
         vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = 'Telescope Diagnostic' })
         vim.keymap.set("n", "<leader>fh", builtin.highlights, { desc = 'Telescope Color Highlights' })
-        vim.keymap.set("n", "gd", builtin.lsp_definitions, { noremap = true, silent = true, desc = "LSP Definitions" })
-        vim.keymap.set("n", "gr", builtin.lsp_references, { noremap = true, silent = true, desc = "LSP References" })
-        vim.keymap.set("n", "gi", builtin.lsp_implementations,
+        vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, { noremap = true, silent = true, desc = "LSP Definitions" })
+        vim.keymap.set("n", "<leader>gr", builtin.lsp_references, { noremap = true, silent = true, desc = "LSP References" })
+        vim.keymap.set("n", "<leader>gi", builtin.lsp_implementations,
             { noremap = true, silent = true, desc = "LSP Implementations" })
-        vim.keymap.set("n", "gt", builtin.lsp_type_definitions,
+        vim.keymap.set("n", "<leader>gt", builtin.lsp_type_definitions,
             { noremap = true, silent = true, desc = "LSP Type Definitions" })
 
         vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, { desc = 'RAW Line Diagnostics' })

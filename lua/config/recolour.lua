@@ -14,6 +14,8 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
+vim.api.nvim_set_hl(0, "FloatBorder", {fg = "#7aa2f7" })
+
 vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#545c7e", bg = "none" })
 
 vim.api.nvim_set_hl(0, "CustomTablineBubbleEdge", { fg = "#1a1b26", bg = "none" })
