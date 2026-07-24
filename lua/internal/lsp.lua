@@ -92,29 +92,29 @@ vim.lsp.config["ty"] = {
     },
 }
 
--- Nix LSP: nil (Incremental Analysis & Fast Feedback)
-vim.lsp.config["nil"] = {
-    cmd = { "nil" },
-    filetypes = { "nix" },
-    root_markers = { "flake.nix", "shell.nix", ".git" },
-    offset_encoding = "utf-16", -- nil (and most LSPs) typically prefer utf-16
-    settings = {
-        ["nil"] = {
-            formatting = {
-                command = { "nixfmt" },
-            },
-            nix = {
-                -- This ensures nil can see your flake inputs for better completion
-                flake = {
-                    autoArchive = true,
-                    autoEvalInputs = true,
-                },
-            },
-        },
-    },
-}
+-- -- Nix LSP: nil (Incremental Analysis & Fast Feedback)
+-- vim.lsp.config["nil"] = {
+--     cmd = { "nil" },
+--     filetypes = { "nix" },
+--     root_markers = { "flake.nix", "shell.nix", ".git" },
+--     offset_encoding = "utf-16", -- nil (and most LSPs) typically prefer utf-16
+--     settings = {
+--         ["nil"] = {
+--             formatting = {
+--                 command = { "nixfmt" },
+--             },
+--             nix = {
+--                 -- This ensures nil can see your flake inputs for better completion
+--                 flake = {
+--                     autoArchive = true,
+--                     autoEvalInputs = true,
+--                 },
+--             },
+--         },
+--     },
+-- }
 
-vim.lsp.enable({ "lua_ls", "ty", "ruff", "nil" })
+vim.lsp.enable({ "lua_ls", "ty", "ruff" })
 
 vim.diagnostic.config({
     virtual_text     = {current_line=true},  -- Display error alongside code
